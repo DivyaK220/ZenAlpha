@@ -150,7 +150,11 @@ app.post("/register", async (req, res) => {
       );
     }
 
-    console.error("Registration error:", err.message);
+    console.error("REGISTRATION ERROR DETAILS:", err);
+    console.error("ERROR CODE:", err.code);
+    console.error("ERROR MESSAGE:", err.message);
+    console.error("ERROR DETAIL:", err.detail);
+    console.error("ERROR STACK:", err.stack);
     return res.status(500).send(
       "Registration failed. Please try again."
     );
