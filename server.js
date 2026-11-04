@@ -62,7 +62,7 @@ function requireLogin(req, res, next) {
 app.use("/assets", express.static(path.join(__dirname, "public", "assets")));
 
 app.get("/", (req, res) => {
-  res.redirect(req.session.user ? "/dashboard" : "/login");
+  res.redirect("/register");
 });
 
 app.get("/login", (req, res) => {
