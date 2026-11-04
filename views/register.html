@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Your Account | ZenAlpha</title>
+<link rel="stylesheet" href="/assets/css/style.css">
+  
+<style>
+    /* =====================================
+       ZENALPHA REGISTRATION PAGE
+       Midnight Navy + Electric Blue Theme
+    ===================================== */
+
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    :root {
+        --navy: #0B1739;
+        --navy-light: #172554;
+        --blue: #2563EB;
+        --blue-hover: #1D4ED8;
+        --sky: #38BDF8;
+        --background: #F8FAFC;
+        --white: #FFFFFF;
+        --text: #172033;
+        --muted: #64748B;
+        --border: #E2E8F0;
+        --success: #10B981;
+    }
+
+    body {
+        font-family: "Segoe UI", Arial, sans-serif;
+        min-height: 100vh;
+        background: var(--background);
+        display: flex;
+        color: var(--text);
+    }
+
+    /* LEFT BRAND PANEL */
+
+    .brand-panel {
+        width: 42%;
+        min-height: 100vh;
+        padding: 48px;
+        background:
+            radial-gradient(
+                circle at top right,
+                rgba(56, 189, 248, 0.16),
+                transparent 42%
+            ),
+            linear-gradient(145deg, #0B1739, #172554);
+        color: var(--white);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .brand {
+        font-size: 27px;
+        font-weight: 800;
+        letter-spacing: -1px;
+        color: var(--white);
+    }
+
+    .brand span {
+        color: var(--sky);
+    }
+
+    .brand-content {
+        max-width: 420px;
+        margin: auto 0;
+        padding: 45px 0;
+    }
+
+    .brand-content h1 {
+        font-size: clamp(32px, 3.5vw, 48px);
+        line-height: 1.15;
+        letter-spacing: -1.5px;
+        margin-bottom: 20px;
+        color: var(--white);
+    }
+
+    .brand-content p {
+        color: #CBD5E1;
+        font-size: 16px;
+        line-height: 1.8;
+    }
+
+    /* BENEFITS */
+
+    .benefits {
+        margin-top: 32px;
+        display: grid;
+        gap: 16px;
+    }
+
+    .benefit {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+        color: #E2E8F0;
+        font-size: 14px;
+    }
+
+    .check {
+        color: #34D399;
+        font-weight: 800;
+        font-size: 17px;
+    }
+
+    .brand-footer {
+        color: #94A3B8;
+        font-size: 13px;
+        line-height: 1.6;
+    }
+
+    /* RIGHT FORM AREA */
+
+    .form-panel {
+        flex: 1;
+        padding: 42px 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 0;
+    }
+
+    .form-card {
+        width: 100%;
+        max-width: 470px;
+        background: var(--white);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: 34px;
+        box-shadow: 0 10px 35px rgba(11, 23, 57, 0.07);
+    }
+
+    /* MOBILE BRAND */
+
+    .mobile-brand {
+        display: none;
+        margin-bottom: 28px;
+        color: var(--navy);
+        font-size: 25px;
+        font-weight: 800;
+        letter-spacing: -0.8px;
+    }
+
+    .mobile-brand span {
+        color: var(--blue);
+    }
+
+    /* FORM HEADING */
+
+    .eyebrow {
+        color: var(--blue);
+        font-size: 12px;
+        font-weight: 800;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        margin-bottom: 10px;
+    }
+
+    h2 {
+        font-size: 29px;
+        letter-spacing: -0.8px;
+        margin-bottom: 9px;
+        color: var(--navy);
+        line-height: 1.25;
+    }
+
+    .subtitle {
+        color: var(--muted);
+        font-size: 14px;
+        line-height: 1.7;
+        margin-bottom: 26px;
+    }
+
+    /* INPUT FIELDS */
+
+    .field {
+        margin-bottom: 17px;
+        min-width: 0;
+    }
+
+    label {
+        display: block;
+        font-size: 13px;
+        font-weight: 650;
+        margin-bottom: 8px;
+        color: #334155;
+    }
+
+    input,
+    select,
+    textarea {
+        width: 100%;
+        min-width: 0;
+        min-height: 46px;
+        padding: 11px 13px;
+        border: 1px solid #CBD5E1;
+        border-radius: 8px;
+        outline: none;
+        font-family: inherit;
+        font-size: 14px;
+        color: var(--text);
+        background: var(--white);
+        transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+        border-color: var(--blue);
+        box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+    }
+
+    input::placeholder,
+    textarea::placeholder {
+        color: #94A3B8;
+    }
+
+    input:disabled,
+    select:disabled,
+    textarea:disabled {
+        background: #F1F5F9;
+        cursor: not-allowed;
+    }
+
+    /* TWO-COLUMN FIELDS */
+
+    .two-columns {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 14px;
+    }
+
+    .hint {
+        font-size: 11px;
+        color: #64748B;
+        margin-top: 6px;
+        line-height: 1.5;
+    }
+
+    /* PRIMARY BUTTON */
+
+    .submit-btn {
+        width: 100%;
+        min-height: 48px;
+        margin-top: 5px;
+        padding: 12px 18px;
+        background: var(--blue);
+        color: var(--white);
+        border: none;
+        border-radius: 9px;
+        font-family: inherit;
+        font-size: 15px;
+        font-weight: 700;
+        cursor: pointer;
+        transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+    }
+
+    .submit-btn:hover {
+        background: var(--blue-hover);
+        box-shadow: 0 5px 14px rgba(37, 99, 235, 0.2);
+    }
+
+    .submit-btn:active {
+        transform: translateY(1px);
+    }
+
+    .submit-btn:disabled {
+        opacity: 0.65;
+        cursor: not-allowed;
+        box-shadow: none;
+    }
+
+    /* SIGN-IN LINK */
+
+    .signin {
+        text-align: center;
+        color: var(--muted);
+        font-size: 13px;
+        margin-top: 22px;
+        line-height: 1.7;
+    }
+
+    .signin a {
+        color: var(--blue);
+        text-decoration: none;
+        font-weight: 700;
+    }
+
+    .signin a:hover {
+        color: var(--navy);
+        text-decoration: underline;
+    }
+
+    /* NOTICE */
+
+    .notice {
+        font-size: 11px;
+        color: #94A3B8;
+        line-height: 1.7;
+        margin-top: 20px;
+        text-align: center;
+    }
+
+    /* STATUS MESSAGES */
+
+    .form-message {
+        padding: 12px 14px;
+        border-radius: 8px;
+        margin-bottom: 16px;
+        font-size: 13px;
+        line-height: 1.6;
+    }
+
+    .form-message.success {
+        color: #065F46;
+        background: #ECFDF5;
+        border: 1px solid #A7F3D0;
+    }
+
+    .form-message.error {
+        color: #991B1B;
+        background: #FEF2F2;
+        border: 1px solid #FECACA;
+    }
+
+    /* OTHER COMMON FORM ELEMENTS */
+
+    a {
+        transition: color 0.2s;
+    }
+
+    button,
+    input,
+    select,
+    textarea {
+        font-family: inherit;
+    }
+
+    input[type="checkbox"],
+    input[type="radio"] {
+        width: auto;
+        min-height: auto;
+        accent-color: var(--blue);
+    }
+
+    /* TABLET AND MOBILE */
+
+    @media (max-width: 800px) {
+        body {
+            display: block;
+        }
+
+        .brand-panel {
+            display: none;
+        }
+
+        .form-panel {
+            width: 100%;
+            min-height: 100vh;
+            padding: 28px 18px;
+        }
+
+        .form-card {
+            max-width: 500px;
+            padding: 30px 25px;
+        }
+
+        .mobile-brand {
+            display: block;
+        }
+    }
+
+    @media (max-width: 420px) {
+        .form-panel {
+            padding: 18px 12px;
+        }
+
+        .form-card {
+            padding: 24px 18px;
+            border-radius: 12px;
+        }
+
+        .two-columns {
+            grid-template-columns: 1fr;
+            gap: 0;
+        }
+
+        h2 {
+            font-size: 26px;
+        }
+
+        .brand-content h1 {
+            font-size: 32px;
+        }
+    }
+</style>
+  
+</head>
+
+<body>
+  <aside class="brand-panel">
+    <div class="brand">Zen<span>Alpha</span></div>
+
+    <div class="brand-content">
+      <h1>Build your logistics business with confidence.</h1>
+      <p>
+        One workspace for your company, operations,
+        deliveries and teams. Get your business ready
+        for smarter logistics management.
+      </p>
+
+      <div class="benefits">
+        <div class="benefit">
+          <span class="check">✓</span>
+          Centralized logistics operations
+        </div>
+        <div class="benefit">
+          <span class="check">✓</span>
+          Company and team management
+        </div>
+        <div class="benefit">
+          <span class="check">✓</span>
+          Jobsheets and cash reconciliation
+        </div>
+      </div>
+    </div>
+
+    <div class="brand-footer">
+      © 2026 ZenAlpha Logistics Platform
+    </div>
+  </aside>
+
+  <main class="form-panel">
+    <section class="form-card">
+      <div class="mobile-brand">Zen<span style="color:#2586e8">Alpha</span></div>
+
+      <div class="eyebrow">Get started</div>
+      <h2>Create your company account</h2>
+      <p class="subtitle">
+        Register your logistics company to set up your
+        private ZenAlpha workspace.
+      </p>
+
+      <form id="registerForm" action="/register" method="POST">
+        <div class="field">
+          <label for="companyName">Company name</label>
+          <input
+            id="companyName"
+            name="companyName"
+            type="text"
+            placeholder="e.g. Alpha Logistics"
+            maxlength="150"
+            autocomplete="organization"
+            required
+          >
+        </div>
+
+        <div class="field">
+          <label for="fullName">Administrator's full name</label>
+          <input
+            id="fullName"
+            name="fullName"
+            type="text"
+            placeholder="Enter your full name"
+            maxlength="150"
+            autocomplete="name"
+            required
+          >
+        </div>
+
+        <div class="field">
+          <label for="email">Work email</label>
+          <input
+            id="email"
+            name="email"
+            type="email"
+            placeholder="you@company.com"
+            maxlength="255"
+            autocomplete="email"
+            required
+          >
+        </div>
+
+        <div class="field">
+          <label for="phone">Phone number</label>
+          <input
+            id="phone"
+            name="phone"
+            type="tel"
+            placeholder="Enter phone number"
+            maxlength="30"
+            autocomplete="tel"
+          >
+        </div>
+
+        <div class="two-columns">
+          <div class="field">
+            <label for="password">Password</label>
+            <input
+              id="password"
+              name="password"
+              type="password"
+              placeholder="Minimum 12 characters"
+              minlength="12"
+              maxlength="72"
+              autocomplete="new-password"
+              required
+            >
+          </div>
+
+          <div class="field">
+            <label for="confirmPassword">Confirm password</label>
+            <input
+              id="confirmPassword"
+              name="confirmPassword"
+              type="password"
+              placeholder="Repeat password"
+              minlength="12"
+              maxlength="72"
+              autocomplete="new-password"
+              required
+            >
+          </div>
+        </div>
+
+        <p class="hint">
+          Use at least 12 characters for your password.
+        </p>
+
+        <button class="submit-btn" type="submit">
+          Create Company Account →
+        </button>
+      </form>
+
+      <div class="signin">
+        Already registered?
+        <a href="/login">Sign in</a>
+      </div>
+
+      <p class="notice">
+        Your account details should be protected using secure
+        server-side authentication and encrypted connections.
+      </p>
+    </section>
+  </main>
+
+  <script>
+    const form = document.getElementById("registerForm");
+    const password = document.getElementById("password");
+    const confirmPassword = document.getElementById("confirmPassword");
+
+    function checkPasswords() {
+      if (
+        confirmPassword.value &&
+        password.value !== confirmPassword.value
+      ) {
+        confirmPassword.setCustomValidity("Passwords do not match.");
+      } else {
+        confirmPassword.setCustomValidity("");
+      }
+    }
+
+    password.addEventListener("input", checkPasswords);
+    confirmPassword.addEventListener("input", checkPasswords);
+
+    form.addEventListener("submit", function (event) {
+      checkPasswords();
+
+      if (!form.checkValidity()) {
+        event.preventDefault();
+        form.reportValidity();
+      }
+    });
+  </script>
+</body>
+</html>

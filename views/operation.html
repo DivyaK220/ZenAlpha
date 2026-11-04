@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ZenAlpha Operations</title>
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <script src="/assets/js/operation.js" defer></script>
+</head>
+<body class="dashboard-page">
+  <aside class="sidebar" id="sidebar">
+    <a class="brand-lockup sidebar-brand" href="/dashboard"><span class="brand-mark">ZA</span><span>ZenAlpha</span></a>
+    <p class="nav-caption">OPERATIONS SUITE</p>
+    <nav class="main-nav">
+      <a class="nav-link" href="/dashboard"><span class="menu-icon overview-icon">OV</span><span class="nav-label">Overview</span></a>
+      <a class="nav-link" href="/operations/inbound"><span class="menu-icon bags-icon">IH</span><span class="nav-label">Inbound Hub</span></a>
+      <a class="nav-link" href="/operations/cash-desk"><span class="menu-icon cash-icon">CD</span><span class="nav-label">Cash Desk</span></a>
+      <a class="nav-link" href="/operations/forward-delivery"><span class="menu-icon assign-icon">DC</span><span class="nav-label">Dispatch Center</span></a>
+      <a class="nav-link" href="/operations/jobsheets-active"><span class="menu-icon track-icon">JC</span><span class="nav-label">Jobsheet Control</span></a>
+      <a class="nav-link" href="/operations/earnings"><span class="menu-icon pay-icon">ER</span><span class="nav-label">Earnings &amp; Rewards</span></a>
+      <a class="nav-link" href="/operations/returns"><span class="menu-icon cod-icon">RR</span><span class="nav-label">Returns &amp; Reconciliation</span></a>
+    </nav>
+    <div class="sidebar-bottom"><button id="logoutButton" class="logout-button"><span>↪</span> Sign out</button></div>
+  </aside>
+  <main class="dashboard-main">
+    <header class="topbar">
+      <button class="menu-button" id="menuButton" aria-label="Toggle menu">☰</button>
+      <div><p class="eyebrow orange">ZENALPHA WORKSPACE</p><h1 id="pageTitle">Operations</h1></div>
+      <div class="profile"><div class="avatar">ZA</div><div><strong id="staffName">Staff</strong><small>Authorized staff</small></div></div>
+    </header>
+    <section class="welcome-row"><div><h2 id="pageHeading">Operations workspace</h2><p id="pageDescription">Manage your logistics workflow.</p></div><a class="date-pill" href="/dashboard">← Back to overview</a></section>
+    <section class="content-card operation-card">
+      <div class="section-heading"><div><p class="eyebrow orange">WORKFLOW</p><h2 id="formTitle">Create a record</h2></div><span class="sample-tag">STARTER FORM</span></div>
+      <form id="operationForm" class="operation-form">
+        <div id="dynamicFields" class="form-grid"></div>
+        <p id="operationMessage" class="form-message" role="status"></p>
+        <button class="primary-button" type="submit">Save draft locally</button>
+      </form>
+    </section>
+    <p class="demo-notice">Prototype note: this page demonstrates the workflow and form layout. Records are not saved to a database yet.</p>
+  </main>
+</body>
+</html>

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard | ZenAlpha</title>
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <script src="/assets/js/dashboard.js" defer></script>
+</head>
+<body class="dashboard-page">
+  <aside class="sidebar" id="sidebar">
+    <a class="brand-lockup sidebar-brand" href="/dashboard"><span class="brand-mark">ZA</span><span>ZenAlpha</span></a>
+    <p class="nav-caption">OPERATIONS SUITE</p>
+    <nav class="main-nav">
+      <a class="nav-link active" href="/dashboard"><span class="menu-icon overview-icon">OV</span><span class="nav-label">Overview</span></a>
+      <a class="nav-link" href="/operations/inbound"><span class="menu-icon bags-icon">IH</span><span class="nav-label">Inbound Hub</span></a>
+      <a class="nav-link" href="/operations/cash-desk"><span class="menu-icon cash-icon">CD</span><span class="nav-label">Cash Desk</span></a>
+      <a class="nav-link" href="/operations/staff-riders">
+  <span class="menu-icon assign-icon">SR</span>
+  <span class="nav-label">Staff &amp; Riders</span>
+    </a> 
+      <div class="nav-group">
+        <button class="nav-link nav-toggle" type="button" aria-expanded="false" aria-controls="dispatch-submenu"><span class="menu-icon assign-icon">DC</span><span class="nav-label">Dispatch Center</span><span class="chevron">⌄</span></button>
+        <div class="submenu" id="dispatch-submenu" hidden>
+          <a href="/operations/forward-delivery">Forward Delivery</a>
+          <a href="/operations/return-pickup">Return Pickup</a>
+        </div>
+      </div>
+      <div class="nav-group">
+        <button class="nav-link nav-toggle" type="button" aria-expanded="false" aria-controls="jobsheet-submenu"><span class="menu-icon track-icon">JC</span><span class="nav-label">Jobsheet Control</span><span class="chevron">⌄</span></button>
+        <div class="submenu" id="jobsheet-submenu" hidden>
+          <a href="/operations/jobsheets-active">Active Jobsheets</a>
+          <a href="/operations/jobsheets-drafts">Draft Jobsheets</a>
+          <a href="/operations/jobsheets-archived">Archived Jobsheets</a>
+        </div>
+      </div>
+      <div class="nav-group">
+        <button class="nav-link nav-toggle" type="button" aria-expanded="false" aria-controls="earnings-submenu"><span class="menu-icon pay-icon">ER</span><span class="nav-label">Earnings &amp; Rewards</span><span class="chevron">⌄</span></button>
+        <div class="submenu" id="earnings-submenu" hidden>
+          <a href="/operations/earnings">Earnings Overview</a>
+          <a href="/operations/incentives">Performance Rewards</a>
+        </div>
+      </div>
+      <div class="nav-group">
+        <button class="nav-link nav-toggle" type="button" aria-expanded="false" aria-controls="returns-submenu"><span class="menu-icon cod-icon">RR</span><span class="nav-label">Returns &amp; Reconciliation</span><span class="chevron">⌄</span></button>
+        <div class="submenu" id="returns-submenu" hidden>
+          <a href="/operations/returns">Returns &amp; Undelivered</a>
+          <a href="/operations/cash-transfer">Cash Transfer</a>
+        </div>
+      </div>
+    </nav>
+    <div class="sidebar-bottom">
+      <div class="help-card"><strong>Need a hand?</strong><p>Your operations hub, all in one place.</p></div>
+      <button id="logoutButton" class="logout-button"><span>↪</span> Sign out</button>
+    </div>
+  </aside>
+  <main class="dashboard-main">
+    <header class="topbar">
+      <button class="menu-button" id="menuButton" aria-label="Toggle menu">☰</button>
+      <div><p class="eyebrow orange">OPERATIONS</p><h1>Dashboard overview</h1></div>
+      <div class="profile"><div class="avatar">ZA</div><div><strong id="staffName">Administrator</strong><small id="staffRole">ZenAlpha staff</small></div></div>
+    </header>
+    <section class="welcome-row">
+      <div><h2>Good to see you.</h2><p>Here’s a snapshot of your logistics operations.</p></div>
+      <div class="date-pill" id="todayDate"></div>
+    </section>
+    <section class="jobsheet-overview">
+
+  <div class="jobsheet-header">
+    <div>
+      <p class="eyebrow orange">OPERATIONS CONTROL</p>
+      <h2>Jobsheets</h2>
+    </div>
+  </div>
+
+  <div class="jobsheet-tabs">
+
+    <button class="jobsheet-tab active" data-status="active">
+      Active
+      <span id="activeCount">0</span>
+    </button>
+
+    <button class="jobsheet-tab" data-status="draft">
+      Drafts
+      <span id="draftCount">0</span>
+    </button>
+
+    <button class="jobsheet-tab" data-status="archived">
+      Archived
+      <span id="archivedCount">0</span>
+    </button>
+
+  </div>
+
+  <section class="content-card jobsheet-table-card">
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+  <tr>
+    <th>Sl.no</th>
+    <th>Jobsheet No.</th>
+    <th>Assigned To</th>
+    <th>Sheet Type</th>
+    <th>Contact</th>
+    <th>Parcels</th>
+    <th>Current Status</th>
+    <th>Updated</th>
+    <th>Manage</th>
+  </tr>
+</thead>
+
+<tbody id="jobsheetRows">
+  <tr>
+    <td colspan="9">Loading jobsheets...</td>
+  </tr>
+</tbody>
+
+      </table>
+    </div>
+
+  </section>
+
+</section>
+  </main>
+</body>
+</html>

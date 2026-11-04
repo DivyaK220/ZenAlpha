@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign in | ZenAlpha</title>
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <script src="/assets/js/login.js" defer></script>
+</head>
+<body class="login-page">
+  <main class="login-layout">
+    <section class="brand-panel">
+      <div class="brand-lockup"><span class="brand-mark">ZA</span><span>ZenAlpha</span></div>
+      <div class="brand-copy">
+        <p class="eyebrow">LOGISTICS MANAGEMENT</p>
+        <h1>Every delivery.<br><span>Under control.</span></h1>
+        <p class="muted-light">A single workspace to coordinate shipments, riders and daily operations.</p>
+      </div>
+      <div class="brand-footer">MOVE SMARTER. DELIVER BETTER.</div>
+    </section>
+    <section class="login-panel">
+      <div class="mobile-brand"><span class="brand-mark">ZA</span><strong>ZenAlpha</strong></div>
+      <div class="login-card">
+        <p class="eyebrow orange">WELCOME BACK</p>
+        <h2>Sign in to your portal</h2>
+        <p class="subheading">Enter your staff credentials to continue.</p>
+        <form id="loginForm">
+          <label for="username">Username</label>
+          <input id="username" name="username" autocomplete="username" placeholder="Enter your username" required>
+          <label for="password">Password</label>
+          <div class="password-wrap">
+            <input id="password" name="password" type="password" autocomplete="current-password" placeholder="Enter your password" required>
+            <button class="show-password" type="button" id="togglePassword" aria-label="Show password">Show</button>
+          </div>
+          <p id="loginMessage" class="form-message" role="alert"></p>
+          <button class="primary-button full-button" type="submit" id="loginButton">Sign in <span>→</span></button>
+        </form>
+        <p class="secure-note"><span>●</span> Secure staff access</p>
+      </div>
+      <footer class="login-footer">© <span id="year"></span> ZenAlpha Logistics</footer>
+    </section>
+  </main>
+</body>
+</html>
