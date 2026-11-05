@@ -760,7 +760,9 @@ app.listen(PORT, async () => {
       result.rows[0].database
     );
   } catch (err) {
-    console.error("PostgreSQL connection failed:", err.message);
+    console.error("POSTGRES STARTUP ERROR:", err);
+    console.error("POSTGRES ERROR CODE:", err.code);
+    console.error("POSTGRES ERROR MESSAGE:", err.message);
   }
 
   console.log("For safety, do not deploy with the sample password or session secret.");
