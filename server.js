@@ -23,6 +23,11 @@ db.on("error", (err) => {
   console.error("Unexpected PostgreSQL error:", err.message);
 });
 const PORT = Number(process.env.PORT) || 3000;
+console.log("DB Host being used:", process.env.DB_HOST);
+console.log("DB Port being used:", process.env.DB_PORT);
+console.log("DB Name being used:", process.env.DB_NAME);
+console.log("DB User configured:", !!process.env.DB_USER);
+console.log("DB Password configured:", !!process.env.DB_PASSWORD);
 const ADMIN_USERNAME = process.env.ADMIN_USERNAME;
 const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD;
 const SESSION_SECRET = process.env.SESSION_SECRET;
