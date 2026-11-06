@@ -39,6 +39,7 @@ if (!ADMIN_USERNAME || !ADMIN_PASSWORD || !SESSION_SECRET) {
 }
 
 app.disable("x-powered-by");
+app.set("trust proxy", 1);
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
