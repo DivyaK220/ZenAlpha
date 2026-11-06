@@ -44,33 +44,8 @@ async function loadOverviewJobsheets(status = "active") {
 
   if (!rows) return;
 
-  rows.innerHTML = `
-    <tr>
-      <td colspan="9">Loading jobsheets...</td>
-    </tr>
-  `;
-
-  try {
-    const response = await fetch(
-      `/api/jobsheets?status=${encodeURIComponent(status)}`
-    );
-
-    if (response.status === 401 || response.redirected) {
-      window.location.href = "/login";
-      return;
-    }
-
-    const data = await response.json();
-
-    if (!response.ok || !data.ok) {
-      throw new Error(data.message || "Could not load jobsheets.");
-    }
-
-   let jobsheets = data.jobsheets || [];
-
-// Demo data for ZenAlpha presentation
-if (!jobsheets.length) {
-  jobsheets = [
+  // ZenAlpha demonstration data
+  const demoJobsheets = [
     {
       id: 1,
       jobsheet_number: "ZA-JS-1001",
@@ -108,65 +83,71 @@ if (!jobsheets.length) {
       created_at: "2026-11-04T11:00:00"
     }
   ];
-}
 
-    rows.innerHTML = jobsheets.map((jobsheet, index) => `
-  <tr>
+  let jobsheets = [];
 
-    <!-- Sl.no -->
-    <td>${index + 1}</td>
+  try {
+    const response = await fetch(
+      `/api/jobsheets?status=${encodeURIComponent(status)}`
+    );
 
-    <!-- Jobsheet No. -->
-    <td>${escapeHtml(jobsheet.jobsheet_number)}</td>
+    if (response.status === 401 || response.redirected) {
+      window.location.href = "/login";
+      return;
+    }
 
-    <!-- Assigned To -->
-    <td>${escapeHtml(jobsheet.rider_name || "Not assigned")}</td>
+    const data = await response.json();
 
-    <!-- Sheet Type -->
-    <td>Runsheet</td>
-
-    <!-- Contact -->
-    <td>${escapeHtml(jobsheet.rider_phone || "-")}</td>
-
-    <!-- Parcels -->
-    <td>${Number(jobsheet.shipment_count || 0)}</td>
-
-    <!-- Current Status -->
-    <td>
-      <span class="jobsheet-status ${escapeHtml(jobsheet.status)}">
-        ${escapeHtml(formatJobsheetStatus(jobsheet.status))}
-      </span>
-    </td>
-
-    <!-- Updated -->
-    <td>${escapeHtml(formatJobsheetDateTime(jobsheet.created_at))}</td>
-
-    <!-- Manage -->
-    <td>
-      <button
-        type="button"
-        class="primary-button jobsheet-action"
-        data-id="${Number(jobsheet.id)}"
-      >
-        View
-      </button>
-    </td>
-
-  </tr>
-`).join("");
+    // Use real data if available
+    if (response.ok && data.ok && data.jobsheets?.length) {
+      jobsheets = data.jobsheets;
+    }
 
   } catch (error) {
+    console.warn("Could not load live jobsheets. Showing demo data.", error);
+  }
 
+  // Show demo data when there is no real data
+  if (!jobsheets.length && status === "active") {
+    jobsheets = demoJobsheets;
+  }
+
+  // If another tab has no real data
+  if (!jobsheets.length) {
     rows.innerHTML = `
       <tr>
-        <td colspan="9">
-          ${escapeHtml(error.message)}
-        </td>
+        <td colspan="9">No ${escapeHtml(status)} jobsheets found.</td>
       </tr>
     `;
+    return;
   }
-}
 
+  rows.innerHTML = jobsheets.map((jobsheet, index) => `
+    <tr>
+      <td>${index + 1}</td>
+      <td>${escapeHtml(jobsheet.jobsheet_number)}</td>
+      <td>${escapeHtml(jobsheet.rider_name || "Not assigned")}</td>
+      <td>Runsheet</td>
+      <td>${escapeHtml(jobsheet.rider_phone || "-")}</td>
+      <td>${Number(jobsheet.shipment_count || 0)}</td>
+      <td>
+        <span class="jobsheet-status ${escapeHtml(jobsheet.status)}">
+          ${escapeHtml(formatJobsheetStatus(jobsheet.status))}
+        </span>
+      </td>
+      <td>${escapeHtml(formatJobsheetDateTime(jobsheet.created_at))}</td>
+      <td>
+        <button
+          type="button"
+          class="primary-button jobsheet-action"
+          data-id="${Number(jobsheet.id)}"
+        >
+          View
+        </button>
+      </td>
+    </tr>
+  `).join("");
+}
 
 /* ==========================================
    JOBSHEET TABS
